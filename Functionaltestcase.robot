@@ -60,9 +60,9 @@ To create a new campaign by manual flow
     SeleniumLibrary.Click Button    xpath=.//button[@title='Next']
     SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
     SeleniumLibrary.Click Element    xpath=.//input[@title='Save & Proceed']
-    Sleep    20s
+    Sleep    40s
     SeleniumLibrary.Click Element    xpath=.//p[@class='sdnptop pfontsize ng-binding']
-    Sleep    20s
+    Sleep    40s
     SeleniumLibrary.Mouse Over    xpath=.//div[@class='col-sm-12 sdnmaincontainerforsavedtemplate']/div/div[@class='col-sm-4 ng-scope'][1]
     SeleniumLibrary.Click Element    xpath=.//div[@class='col-sm-12 sdnmaincontainerforsavedtemplate']/div/div[@class='col-sm-4 ng-scope'][1]
     SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//button[@ng-click='channelselectfornext()']    
