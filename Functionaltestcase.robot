@@ -60,10 +60,9 @@ To create a new campaign by manual flow
     SeleniumLibrary.Click Button    xpath=.//button[@title='Next']
     SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
     SeleniumLibrary.Click Element    xpath=.//input[@title='Save & Proceed']
-    SeleniumLibrary.Click Element    xpath=.//p[@class='sdnptop pfontsize ng-binding']
-    SeleniumLibrary.Click Element    xpath=.//div[@class='col-sm-12 sdnmaincontainerforsavedtemplate']/div/div[@class='col-sm-4 ng-scope'][1]
-    SeleniumLibrary.Mouse Over    xpath=.//div[@class='templatepopcombo']/div[@class='Emailer']
-    SeleniumLibrary.Click Element    xpath=.//div[@class='templatepopcombo']/div[@class='Emailer']
+    SeleniumLibrary.Click Element    xpath=(.//div[@class='col-sm-12 sdnmaincontainer']/div/div[@class='col-sm-4 ng-scope'])[1]
+    SeleniumLibrary.Mouse Over    xpath=.//div[@class='mCSB_container']//div[@class='templatepopcombo']/div/h4[contains(.,'Emailer')]
+    SeleniumLibrary.Click Element    xpath=.//div[@class='mCSB_container']//div[@class='templatepopcombo']/div/h4[contains(.,'Emailer')]
     SeleniumLibrary.Wait Until Element Is Enabled    xpath=.//button[@ng-click='channelselectfornext()']    
     SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
     SeleniumLibrary.Click Element    xpath=.//button[@ng-click='channelselectfornext()']
