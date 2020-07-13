@@ -49,8 +49,8 @@ To create a new campaign by manual flow
     SeleniumLibrary.Click Element    xpath=.//input[@name='saveChanges']
     SeleniumLibrary.Click Element    xpath=.//a[@title='Check Count']
     SeleniumLibrary.Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
-    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-show='showRecordCount']    
-    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]    
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-show='showRecordCount']    25s         
+    SeleniumLibrary.Wait Until Page Contains Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]    25s    
     SeleniumLibrary.Click Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]
     SeleniumLibrary.Click Element    xpath=.//a[@title='Save and Proceed']
     SeleniumLibrary.Click Element    xpath=(.//div[@class='btn-group fg col-sm-8']/label)[1]
