@@ -57,14 +57,6 @@ Default Lead Time - Verify user can provide lead time as 5 days or above
     Element Should Be Visible    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${final_date})]
     ${previous_date}=    Evaluate    ${choose_date}-1
     Element Should Not Be Visible    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${previous_date})]
-
-User Base Allocation - Verify user can provide base allocation as inbetween 5 to 50%
-User Base Allocation - Verify user can provide base allocation as below 5%
-User Base Allocation - Verify user can provide bas allocation as above 50%
-Number of Variances - Verify user can provide number of variants below 2
-Number of Variances - Verify user can provide number ofvariants above 2
-Minimum user base count - Verify user can provide base count as 10,000 or above
-Minimum user base count - Verify user can provide base count as below 10,000
 *** Keywords ***
 Local Open browser
     Set Selenium Speed    .5s
