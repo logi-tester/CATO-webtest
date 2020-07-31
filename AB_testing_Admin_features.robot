@@ -58,6 +58,7 @@ Default Lead Time - Verify user can provide lead time as 5 days or above
     ${previous_date}=    Evaluate    ${choose_date}-1
     Element Should Not Be Visible    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${previous_date})]
 
+User base Allocation - Verify user can provide base allocation as inbetween 5 to 50%
 *** Keywords ***
 Local Open browser
     Set Selenium Speed    .5s
@@ -106,6 +107,6 @@ Jenkins browser launch
     Call Method    ${chrome_options}    add_argument    disable-gpu
     Call Method    ${chrome_options}    add_argument    no-sandbox
     Create WebDriver    Chrome    chrome_options=${chrome_options}
+    Set Window Size    1920    1080
     Go To    ${url}
-    Maximize Browser Window
     Set Browser Implicit Wait    15s
