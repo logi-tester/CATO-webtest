@@ -53,13 +53,13 @@ Default Lead Time - Verify user can provide lead time as 5 days or above
     Click Element    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${choose_date})]
     ${output_date}=    Evaluate    ${choose_date}+${lead_time_days}
     ${status}=    Run Keyword And Return Status    Click Element    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${output_date})]
-    Log To Console    Forward date Status is:${status}
+    #Log To Console    Forward date Status is:${status}
     Run Keyword If    'True'=='${status}'    Fail    "Selected date + Lead time days=count date is clickable"
     ${final_date}=    Evaluate    ${output_date}+1
     Element Should Be Enabled    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${final_date})]
     ${previous_date}=    Evaluate    ${choose_date}-1
     ${status}=    Run Keyword And Return Status    Click Element    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${previous_date})]
-    Log To Console    Previous date Status is:${status}
+    #Log To Console    Previous date Status is:${status}
     Run Keyword If    'True'=='${status}'    Fail    "Selected date from previous date is clickable"
 
 *** Keywords ***
