@@ -34,7 +34,7 @@ Default Lead Time - Verify user can provide lead time below 5 days
     ${alert_msg}=    Get Text    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]//ancestor-or-self::div[@class='modal-content md-bg']/div/div[1]/h4
     Should Be Equal    ${alert_msg}    Please enter above 5 days.
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
-
+    
 Default Lead Time - Verify user can provide lead time as 5 days or above
     Jenkins browser launch
     #Local Open browser
@@ -52,11 +52,16 @@ Default Lead Time - Verify user can provide lead time as 5 days or above
     Campaign creation for a/b testing
     Click Element    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${choose_date})]
     ${output_date}=    Evaluate    ${choose_date}+${lead_time_days}
-    Element Should Not Be Visible    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${output_date})]
+    ${status}=    Run Keyword And Return Status    Click Element    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${output_date})]
+    Log To Console    Forward date Status is:${status}
+    Run Keyword If    'True'=='${status}'    Fail    "Selected date + Lead time days=count date is clickable"
     ${final_date}=    Evaluate    ${output_date}+1
-    Element Should Be Visible    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${final_date})]
+    Element Should Be Enabled    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${final_date})]
     ${previous_date}=    Evaluate    ${choose_date}-1
-    Element Should Not Be Visible    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${previous_date})]
+    ${status}=    Run Keyword And Return Status    Click Element    xpath=.//table[@class='ds-table']/tbody/tr/td/div/label/span[contains(.,${previous_date})]
+    Log To Console    Previous date Status is:${status}
+    Run Keyword If    'True'=='${status}'    Fail    "Selected date from previous date is clickable"
+
 *** Keywords ***
 Local Open browser
     Set Selenium Speed    .5s
@@ -76,7 +81,6 @@ Campaign creation for a/b testing
     Wait Until Element Is Enabled    xpath=.//li[@ng-click='createNewProgram()']
     Click Element    xpath=.//li[@ng-click='createNewProgram()']
     Click Element    xpath=.//div[@id='productName'][contains(.,'Money Market Accounts')]
-    Sleep    10s
     Click Element    xpath=.//div[@class='objectivelist']/div[contains(.,'Activation')]
     Click Element    xpath=.//div[@class='approach-head']/div[contains(.,'Inactive for 180 or more days')]
     Click Element    xpath=.//div[@id='fromDate']//div/a[2]
@@ -95,11 +99,12 @@ Campaign creation for a/b testing
     Click Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]
     Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
     Click Element    xpath=.//a[@title='Save and Proceed']
+    Sleep    30s
     Click Element    xpath=.//div[@class='abtestenablebtn']/div/button[1]
     Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
 
 Jenkins browser launch
-    Set Selenium Speed    1s
+    Set Selenium Speed    .5s
     ${chrome_options} =    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     Call Method    ${chrome_options}    add_argument    headless
     Call Method    ${chrome_options}    add_argument    disable-gpu
@@ -107,4 +112,4 @@ Jenkins browser launch
     Create WebDriver    Chrome    chrome_options=${chrome_options}
     Set Window Size    1920    1080
     Go To    ${url}
-    Set Browser Implicit Wait    15s
+    Set Browser Implicit Wait    60s
