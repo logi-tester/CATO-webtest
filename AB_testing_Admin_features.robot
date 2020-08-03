@@ -174,7 +174,7 @@ Minimum user base count - Verify user can provide base count as 10,000 or above
     Run Keyword If    '${status_val}'=='${AB_testing_label_status}'    Log To Console    A/B testing is enable in orchestration page
     Run Keyword If    '${status_val}'!='${AB_testing_label_status}'    Fail    A/B testing is not enable in orchestration page
 
-*** Keywords ****** Keywords ***
+*** Keywords ***
 Local Open browser
     Set Selenium Speed    .5s
     Open Browser    ${url}    ${browser}
