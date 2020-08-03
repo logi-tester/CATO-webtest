@@ -9,6 +9,8 @@ ${browser}        chrome
 ${lead_time_days}    5
 ${below_lead_time}    4
 ${base_allocation}    4
+${base_allocation_above_val}    55
+${base_allocation_btw_val}    45
 ${variances_below_val}    1
 ${variances_above_val}    2
 ${choose_date}    16
@@ -78,6 +80,33 @@ User Base Allocation - Verify user can provide base allocation as below 5%
     Click Element    xpath=(.//*[@id='frequencyVariant']//button[contains(.,'SAVE')])[2]
     ${alert_msg}=    Get Text    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]//ancestor-or-self::div[@class='modal-content md-bg']/div/div[1]/h4
     Should Be Equal    ${alert_msg}    Please enter user base allocation 5% to 50%.
+    Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
+    
+User Base Allocation - Verify user should not provide base allocation as above 50%
+    Jenkins browser launch
+    Login function    admins    admins@123
+    Wait Until Element Is Enabled    id=settingsName    20s
+    Click Element    xpath=.//span[@class='prod_icon']
+    Scroll Element Into View    xpath=.//div[@id='frequencyVariant']/h3[contains(.,'A/B Testing Settings')]
+    Clear Element Text    id=abtestconrol
+    Input Text    id=abtestconrol    ${base_allocation_above_val}
+    Click Element    xpath=(.//*[@id='frequencyVariant']//button[contains(.,'SAVE')])[2]
+    ${alert_msg}=    Get Text    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]//ancestor-or-self::div[@class='modal-content md-bg']/div/div[1]/h4
+    Should Be Equal    ${alert_msg}    Please enter user base allocation 5% to 50%.
+    Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
+
+User Base Allocation - Verify user can provide base allocation as inbetween 5 to 50%
+    Jenkins browser launch
+    Login function    admins    admins@123
+    Wait Until Element Is Enabled    id=settingsName    20s
+    Click Element    xpath=.//span[@class='prod_icon']
+    Scroll Element Into View    xpath=.//div[@id='frequencyVariant']/h3[contains(.,'A/B Testing Settings')]
+    Clear Element Text    id=abtestconrol
+    Input Text    id=abtestconrol    ${base_allocation_btw_val}
+    Click Element    xpath=(.//*[@id='frequencyVariant']//button[contains(.,'SAVE')])[2]
+    Sleep    20s
+    ${alert_msg}=    Get Text    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]//ancestor-or-self::div[@class='modal-content md-bg']/div/div[1]/h4
+    Should Be Equal    ${alert_msg}    Successfully updated
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
     
 Number of Variances - Verify user can provide number of variants below 2
