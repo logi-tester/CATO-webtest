@@ -235,7 +235,7 @@ Campaign creation for a/b testing
     Click Element    xpath=.//div[@ng-repeat='collection in productPercentage'][2]
     Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
     Click Element    xpath=.//a[@title='Save and Proceed']
-    Sleep    30s
+    Sleep    25s
     Click Element    xpath=.//div[@class='abtestenablebtn']/div/button[1]
     Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
 
