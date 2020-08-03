@@ -2,7 +2,7 @@
 Test Teardown     Close Browser
 Library           SeleniumLibrary
 Library           DateTime
-
+Library           String
 *** Variables ***
 ${url}            http://webtest.xerago.com/cvm
 ${browser}        chrome
