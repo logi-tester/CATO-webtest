@@ -27,7 +27,7 @@ Search and delete program
     Click Element    xpath=.//button[@ng-click='deleteConversation()']
     Click Element    xpath=.//*[@id='commonAlert']/div/div/div/div[2]/div/div/div/div/button
 
-Default Lead Time - Verify user can provide lead time below 5 days
+Default Lead Time - Verify user should not provide lead time below 5 days
     Jenkins browser launch
     #Local Open browser
     Login function    admins    admins@123
@@ -68,7 +68,7 @@ Default Lead Time - Verify user can provide lead time as 5 days or above
     #Log To Console    Previous date Status is:${status}
     Run Keyword If    'True'=='${status}'    Fail    "Selected date from previous date is clickable"
 
-User Base Allocation - Verify user can provide base allocation as below 5%
+User Base Allocation - Verify user should not provide base allocation as below 5%
     Jenkins browser launch
     #Local Open browser
     Login function    admins    admins@123
@@ -109,7 +109,7 @@ User Base Allocation - Verify user can provide base allocation as inbetween 5 to
     Should Be Equal    ${alert_msg}    Successfully updated
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
     
-Number of Variances - Verify user can provide number of variants below 2
+Number of Variances - Verify user should not provide number of variants below 2
     Jenkins browser launch
     #Local Open browser
     Login function    admins    admins@123
@@ -123,9 +123,7 @@ Number of Variances - Verify user can provide number of variants below 2
     Should Be Equal    ${alert_msg}    Please enter above 2 Variants.
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
 
-
-
-Minimum user base count - Verify user can provide base count as below 10,000
+Minimum user base count - Verify user should not provide base count as below 10,000
     Jenkins browser launch
     #Local Open browser
     Login function    admins    admins@123
