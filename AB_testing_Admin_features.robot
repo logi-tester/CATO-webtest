@@ -123,7 +123,7 @@ Number of Variances - Verify user should not provide number of variants below 2
     Should Be Equal    ${alert_msg}    Please enter above 2 Variants.
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
 
-Minimum user base count - Verify user should not provide base count as below 10,000
+Minimum user base count - Verify user should not provide base count as below 10k
     Jenkins browser launch
     #Local Open browser
     Login function    admins    admins@123
@@ -136,7 +136,7 @@ Minimum user base count - Verify user should not provide base count as below 10,
     Should Be Equal    ${alert_msg}    Please enter above 10K.
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
     
-Minimum user base count - Verify user can provide base count as 10,000 or above
+Minimum user base count - Verify user can provide base count as 10k or above
     Jenkins browser launch
     #Local Open browser
     Login function    admins    admins@123
