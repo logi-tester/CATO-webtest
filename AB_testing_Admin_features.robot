@@ -91,6 +91,7 @@ User Base Allocation - Verify user should not provide base allocation as above 5
     Clear Element Text    id=abtestconrol
     Input Text    id=abtestconrol    ${base_allocation_above_val}
     Click Element    xpath=(.//*[@id='frequencyVariant']//button[contains(.,'SAVE')])[2]
+    Sleep    10s
     ${alert_msg}=    Get Text    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]//ancestor-or-self::div[@class='modal-content md-bg']/div/div[1]/h4
     Should Be Equal    ${alert_msg}    Please enter user base allocation 5% to 50%.
     Click Element    xpath=(.//div[@class='canrej']//button[contains(.,'Ok')])[2]
